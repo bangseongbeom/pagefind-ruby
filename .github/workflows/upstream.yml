@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       upstream_tag:
-        description: "Upstream tag to bump to (e.g., v4.2.1). Leave blank to auto-detect latest."
+        description: "Upstream tag to bump to (e.g., v1.5.2). Leave blank to auto-detect latest."
         required: false
         type: string
 
