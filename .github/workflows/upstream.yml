@@ -20,6 +20,10 @@ jobs:
   bump:
     name: "Detect and PR new upstream release"
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
@@ -106,7 +110,7 @@ jobs:
       - name: Create PR
         if: steps.upstream.outputs.needed == 'true' && steps.existing_pr.outputs.exists == 'false'
         env:
-          GH_TOKEN: ${{ secrets.PAGEFIND_RUBY_PR_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           STEPS_UPSTREAM_OUTPUTS_UPSTREAM_TAG: ${{ steps.upstream.outputs.upstream_tag }}
         run: |
@@ -126,3 +130,5 @@ jobs:
           gh pr create \
             --title "dep: update to Pagefind ${upstream_tag}" \
             --body "$(printf "Update to [Pagefind %s](https://github.com/Pagefind/pagefind/releases/tag/%s).\n\nThis PR was created automatically by the upstream workflow." "${upstream_tag}" "${upstream_tag}")"
+
+          gh workflow run ci.yml --ref "${branch}"
