@@ -10,7 +10,6 @@ This gem wraps [the precompiled binary](https://pagefind.app/docs/installation/#
 Supported platforms are:
 
 - arm64-darwin (macos-arm64)
-- x64-mingw32 (windows-x64)
 - x64-mingw-ucr (windows-x64)
 - x86_64-darwin (macos-x64)
 - x86_64-linux (linux-x64)
@@ -100,7 +99,6 @@ Options:
 Some users are reporting this error even when running on one of the supported native platforms:
 
 - arm64-darwin
-- x64-mingw32
 - x64-mingw-ucrt
 - x86_64-darwin
 - x86_64-linux

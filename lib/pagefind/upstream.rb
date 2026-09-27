@@ -5,7 +5,6 @@ module Pagefind
     # rubygems platform name => upstream release filename
     NATIVE_PLATFORMS = {
       "arm64-darwin" => "pagefind-macos-arm64",
-      "x64-mingw32" => "pagefind-windows-x64.exe",
       "x64-mingw-ucrt" => "pagefind-windows-x64.exe",
       "x86_64-darwin" => "pagefind-macos-x64",
       "x86_64-linux-gnu" => "pagefind-linux-x64",
