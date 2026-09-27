@@ -1,5 +1,6 @@
 The MIT License (MIT)
 
+Copyright (c) 2020-2024 Mike Dalessio, David Heinemeier Hansson
 Copyright (c) 2026 방성범 (Bang Seongbeom)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
