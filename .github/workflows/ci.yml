@@ -134,3 +134,24 @@ jobs:
               gem install pkg/pagefind-*.gem
               pagefind --help
             "
+
+  install-freebsd:
+    name: "install (amd64-freebsd)"
+    needs: [ "package" ]
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: cpa.sh {0}
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: gem-amd64-freebsd
+          path: pkg
+      - uses: cross-platform-actions/action@e0b9770014ba65d5e0815f15b74031c3a635f641 # v1.6.0
+        with:
+          operating_system: freebsd
+          architecture: x86-64
+          version: "15.1"
+      - run: sudo pkg install -y ruby34-gems
+      - run: sudo gem install pkg/pagefind-*.gem
+      - run: pagefind --help
