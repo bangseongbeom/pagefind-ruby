@@ -62,7 +62,7 @@ The gem makes available `Pagefind.executable` which is the path to the vendored 
 ``` ruby
 require "pagefind"
 Pagefind.executable
-# => "/path/to/installs/ruby/3.3.5/lib/ruby/gems/3.3.0/gems/pagefind-0.1.0-x86_64-linux/exe/x86_64-linux/pagefind"
+# => "/path/to/installs/ruby/3.3.5/lib/ruby/gems/3.3.0/gems/pagefind-1.5.2-x86_64-linux/exe/x86_64-linux/pagefind"
 ```
 
 

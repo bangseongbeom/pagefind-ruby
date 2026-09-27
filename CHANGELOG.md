@@ -1,5 +1,5 @@
-## [Unreleased]
+# pagefind-ruby changelog
 
-## [0.1.0] - 2026-09-27
+## v1.5.2
 
-- Initial release
+* Initial release
