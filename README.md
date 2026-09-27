@@ -141,7 +141,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/bangse
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-Pagefind is [released under the MIT License](https://github.com/Pagefind/pagefind/blob/next/LICENSE).
+Pagefind is [released under the MIT License](https://github.com/Pagefind/pagefind/blob/main/LICENSE).
 
 ## Code of Conduct
 
