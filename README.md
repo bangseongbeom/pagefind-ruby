@@ -77,20 +77,19 @@ $ bundle exec which pagefind
 
 # run the actual executable through the shim
 $ bundle exec pagefind --help
-["/path/to/installs/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/pagefind-4.0.12-x86_64-linux-gnu/exe/x86_64-linux-gnu/pagefind", "--help"]
-≈ pagefind v4.0.12
+["/path/to/installs/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/pagefind-1.5.2-x86_64-linux-gnu/exe/x86_64-linux-gnu/pagefind", "--help"]
+Implement search on any static website.
 
-Usage:
-  pagefind [--input input.css] [--output output.css] [--watch] [options…]
+Usage: pagefind [OPTIONS]
 
 Options:
-  -i, --input ··········· Input file
-  -o, --output ·········· Output file [default: `-`]
-  -w, --watch ··········· Watch for changes and rebuild as needed
-  -m, --minify ·········· Optimize and minify the output
-      --optimize ········ Optimize the output without minifying
-      --cwd ············· The current working directory [default: `.`]
-  -h, --help ············ Display usage information
+  -s, --site <SITE>
+          The location of your built static website
+      --output-subdir <OUTPUT_SUBDIR>
+          Where to output the search bundle, relative to the processed site
+      --output-path <OUTPUT_PATH>
+          Where to output the search bundle, relative to the working directory of the command
+  ...
 ```
 
 
