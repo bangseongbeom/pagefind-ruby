@@ -9,12 +9,13 @@ This gem wraps [the precompiled binary](https://pagefind.app/docs/installation/#
 
 Supported platforms are:
 
-- arm64-darwin (macos-arm64)
-- x64-mingw-ucrt (windows-x64)
-- x86_64-darwin (macos-x64)
-- x86_64-linux (linux-x64)
-- aarch64-linux (linux-arm64)
-- arm-linux (linux-armv7)
+- arm64-darwin (aarch64-apple-darwin)
+- x86_64-darwin (x86_64-apple-darwin)
+- x64-mingw-ucrt (x86_64-pc-windows-msvc)
+- aarch64-mingw-ucrt (aarch64-pc-windows-msvc)
+- x86_64-linux (x86_64-unknown-linux-musl)
+- aarch64-linux (aarch64-unknown-linux-musl)
+- amd64-freebsd (x86_64-unknown-freebsd)
 
 Install the gem and add to the application's Gemfile by executing:
 
@@ -76,7 +77,7 @@ $ bundle exec which pagefind
 
 # run the actual executable through the shim
 $ bundle exec pagefind --help
-["/path/to/installs/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/pagefind-1.5.2-x86_64-linux-gnu/exe/x86_64-linux-gnu/pagefind", "--help"]
+["/path/to/installs/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/pagefind-1.5.2-x86_64-linux/exe/x86_64-linux/pagefind", "--help"]
 Implement search on any static website.
 
 Usage: pagefind [OPTIONS]
@@ -99,10 +100,12 @@ Options:
 Some users are reporting this error even when running on one of the supported native platforms:
 
 - arm64-darwin
-- x64-mingw-ucrt
 - x86_64-darwin
+- x64-mingw-ucrt
+- aarch64-mingw-ucrt
 - x86_64-linux
 - aarch64-linux
+- amd64-freebsd
 
 #### Check Bundler PLATFORMS
 
