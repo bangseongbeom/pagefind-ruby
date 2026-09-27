@@ -5,7 +5,7 @@ A self-contained `pagefind` executable, wrapped up in a ruby gem. That's it. Not
 
 ## Installation
 
-This gem wraps [the standalone executable version](https://pagefind.app/blog/standalone-cli) of the Pagefind v4 framework. These executables are platform specific, so there are actually separate underlying gems per platform, but the correct gem will automatically be picked for your platform.
+This gem wraps [the precompiled binary](https://pagefind.app/docs/installation/#downloading-a-precompiled-binary) of Pagefind. These binaries are platform specific, so there are actually separate underlying gems per platform, but the correct gem will automatically be picked for your platform.
 
 Supported platforms are:
 
