@@ -2,14 +2,10 @@
 
 A self-contained `pagefind` executable, wrapped up in a ruby gem. That's it. Nothing else.
 
-If you're looking to leverage pagefind in your Rails project, please see https://github.com/rails/pagefind-rails for integration that is supported by the Rails team.
-
 
 ## ⚠ Upgrade note ⚠
 
 To upgrade an existing application from v3 to v4, I strongly urge you to read the upstream upgrade guide: https://pagefind.app/docs/upgrade-guide.
-
-For Rails users, if you want to upgrade you may want to check out [Pagefind v4 - upgrade experience report · rails/pagefind-rails · Discussion #450](https://github.com/rails/pagefind-rails/discussions/450).
 
 In any case, if you're not ready to upgrade to v4, then pin your project to the 3.x releases:
 
