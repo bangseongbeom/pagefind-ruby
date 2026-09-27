@@ -10,7 +10,7 @@ module Pagefind
       "aarch64-mingw-ucrt" => "aarch64-pc-windows-msvc",
       "x86_64-linux" => "x86_64-unknown-linux-musl",
       "aarch64-linux" => "aarch64-unknown-linux-musl",
-      "amd64-freebsd" => "x86_64-unknown-freebsd",
+      "amd64-freebsd" => "x86_64-unknown-freebsd"
     }
   end
 end

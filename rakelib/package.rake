@@ -1,4 +1,3 @@
-# coding: utf-8
 #
 #  Rake tasks to manage native gem packages with binary executables from Pagefind/pagefind
 #
@@ -34,7 +33,7 @@
 #  - pkg/pagefind-1.0.0-x64-mingw-ucrt.gem
 #  - pkg/pagefind-1.0.0-x86_64-darwin.gem
 #  - pkg/pagefind-1.0.0-x86_64-linux.gem
-# 
+#
 #  Note that in addition to the native gems, a vanilla "ruby" gem will also be created with the
 #  `exe/pagefind` script but without a binary executable present.
 #
@@ -80,7 +79,7 @@ end
 PAGEFIND_RUBY_GEMSPEC = Bundler.load_gemspec("pagefind.gemspec")
 
 # prepend the download task before the Gem::PackageTask tasks
-task :package => :download
+task package: :download
 
 gem_path = Gem::PackageTask.new(PAGEFIND_RUBY_GEMSPEC).define
 desc "Build the ruby gem"
@@ -95,10 +94,8 @@ archivepaths = Pagefind::Upstream::NATIVE_PLATFORMS.values.map do |target|
     warn "Downloading #{archivepath} from #{release_url} ..."
 
     # lazy, but fine for now.
-    URI.open(release_url) do |remote|
-      File.open(archivepath, "wb") do |local|
-        local.write(remote.read)
-      end
+    URI.open(release_url) do |remote| # standard:disable Security/Open
+      File.binwrite(archivepath, remote.read)
     end
   end
 
@@ -135,7 +132,7 @@ Pagefind::Upstream::NATIVE_PLATFORMS.each do |platform, target|
         end
       end
 
-      FileUtils.chmod(0755, exepath, verbose: true)
+      FileUtils.chmod(0o755, exepath, verbose: true)
     end
   end
 end
@@ -146,7 +143,7 @@ task "check" => archivepaths do
     sha_url = pagefind_download_url("#{File.basename(archivepath)}.sha256")
 
     local_sha256 = Digest::SHA256.file(archivepath).hexdigest
-    remote_sha256 = URI.open(sha_url).read.split.first
+    remote_sha256 = URI.open(sha_url).read.split.first # standard:disable Security/Open
 
     if local_sha256 == remote_sha256
       puts "Checksum OK for #{archivepath} (#{local_sha256})"

@@ -108,13 +108,11 @@ class TestPagefind < Minitest::Spec
   end
 
   it ".executable raises ExecutableNotFoundException is PAGEFIND_INSTALL_DIR is set to a nonexistent dir" do
-    begin
-      ENV["PAGEFIND_INSTALL_DIR"] = "/does/not/exist"
-      assert_raises(Pagefind::DirectoryNotFoundException) do
-        Pagefind.executable
-      end
-    ensure
-      ENV["PAGEFIND_INSTALL_DIR"] = nil
+    ENV["PAGEFIND_INSTALL_DIR"] = "/does/not/exist"
+    assert_raises(Pagefind::DirectoryNotFoundException) do
+      Pagefind.executable
     end
+  ensure
+    ENV["PAGEFIND_INSTALL_DIR"] = nil
   end
 end
