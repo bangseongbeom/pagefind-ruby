@@ -10,7 +10,7 @@ This gem wraps [the precompiled binary](https://pagefind.app/docs/installation/#
 Supported platforms are:
 
 - arm64-darwin (macos-arm64)
-- x64-mingw-ucr (windows-x64)
+- x64-mingw-ucrt (windows-x64)
 - x86_64-darwin (macos-x64)
 - x86_64-linux (linux-x64)
 - aarch64-linux (linux-arm64)
