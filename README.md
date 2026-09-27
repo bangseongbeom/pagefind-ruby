@@ -3,18 +3,6 @@
 A self-contained `pagefind` executable, wrapped up in a ruby gem. That's it. Nothing else.
 
 
-## ⚠ Upgrade note ⚠
-
-To upgrade an existing application from v3 to v4, I strongly urge you to read the upstream upgrade guide: https://pagefind.app/docs/upgrade-guide.
-
-In any case, if you're not ready to upgrade to v4, then pin your project to the 3.x releases:
-
-```ruby
-# If you're not ready to upgrade yet!
-gem "pagefind", "~> 3.4"
-```
-
-
 ## Installation
 
 This gem wraps [the standalone executable version](https://pagefind.app/blog/standalone-cli) of the Pagefind v4 framework. These executables are platform specific, so there are actually separate underlying gems per platform, but the correct gem will automatically be picked for your platform.
