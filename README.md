@@ -48,9 +48,9 @@ PAGEFIND_INSTALL_DIR=node_modules/.bin
 
 ## Versioning
 
-This gem will always have the same version number as the underlying Pagefind release. For example, the gem with version v3.4.13 will package upstream Pagefind v3.4.13.
+This gem will always have the same version number as the underlying Pagefind release. For example, the gem with version v1.5.2 will package upstream Pagefind v1.5.2.
 
-If there ever needs to be multiple releases for the same version of Pagefind, the version will contain an additional digit. For example, if we re-released Pagefind v3.4.13, it might be shipped in gem version v3.4.13.1 or v3.4.13.2.
+If there ever needs to be multiple releases for the same version of Pagefind, the version will contain an additional digit. For example, if we re-released Pagefind v1.5.2, it might be shipped in gem version v1.5.2.1 or v1.5.2.2.
 
 
 ## Usage
