@@ -37,10 +37,8 @@ if [[ -n "$($git_cmd status --porcelain --untracked-files=no)" ]]; then
   fail "found uncommitted changes"
 fi
 
-if [[ $upstream_tag =~ ^v4 ]] ; then
+if [[ $upstream_tag =~ ^v1 ]] ; then
   base_branch="main"
-elif [[ $upstream_tag =~ ^v3 ]] ; then
-  base_branch="v3.x"
 else
   fail "Whoa! A new major version? Need to update the ${0} script."
 fi
