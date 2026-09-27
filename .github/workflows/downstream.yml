@@ -25,17 +25,17 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - url: https://github.com/rails/tailwindcss-rails
+          - url: https://github.com/rails/pagefind-rails
             name: rails-unit
             command: "bin/test"
             ruby: "3.4"
-          - url: https://github.com/rails/tailwindcss-rails
+          - url: https://github.com/rails/pagefind-rails
             name: rails-install
-            command: 'env TAILWINDCSSOPTS="--path=$GITHUB_WORKSPACE" test/integration/user_install_test.sh'
+            command: 'env PAGEFINDOPTS="--path=$GITHUB_WORKSPACE" test/integration/user_install_test.sh'
             ruby: "3.4"
-          - url: https://github.com/rails/tailwindcss-rails
+          - url: https://github.com/rails/pagefind-rails
             name: rails-upgrade
-            command: 'env TAILWINDCSSOPTS="--path=$GITHUB_WORKSPACE" test/integration/user_upgrade_test.sh'
+            command: 'env PAGEFINDOPTS="--path=$GITHUB_WORKSPACE" test/integration/user_upgrade_test.sh'
             ruby: "3.4"
     runs-on: ubuntu-latest
     steps:
@@ -52,7 +52,7 @@ jobs:
         working-directory: ${{matrix.name}}
         run: |
           rm -f Gemfile.lock
-          bundle remove tailwindcss-ruby || true
-          bundle add tailwindcss-ruby --path=".."
+          bundle remove pagefind-ruby || true
+          bundle add pagefind-ruby --path=".."
           bundle install --local || bundle install
           ${{matrix.command}}

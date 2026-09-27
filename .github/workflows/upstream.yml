@@ -35,13 +35,13 @@ jobs:
           if [[ -n "${INPUTS_UPSTREAM_TAG}" ]]; then
             upstream_tag="${INPUTS_UPSTREAM_TAG}"
           else
-            upstream_tag=$(gh release view --repo tailwindlabs/tailwindcss --json tagName --jq '.tagName')
+            upstream_tag=$(gh release view --repo Pagefind/pagefind --json tagName --jq '.tagName')
           fi
 
           # verify the release exists upstream
-          gh release view "${upstream_tag}" --repo tailwindlabs/tailwindcss --json tagName > /dev/null
+          gh release view "${upstream_tag}" --repo Pagefind/pagefind --json tagName > /dev/null
 
-          current_tag=$(grep 'VERSION' lib/tailwindcss/ruby/upstream.rb | sed -E 's/.*"(.*)".*/\1/')
+          current_tag=$(grep 'VERSION' lib/pagefind/upstream.rb | sed -E 's/.*"(.*)".*/\1/')
 
           echo "upstream_tag=${upstream_tag}" >> "$GITHUB_OUTPUT"
           echo "current_tag=${current_tag}" >> "$GITHUB_OUTPUT"
@@ -62,7 +62,7 @@ jobs:
           STEPS_UPSTREAM_OUTPUTS_UPSTREAM_TAG: ${{ steps.upstream.outputs.upstream_tag }}
         run: |
           upstream_tag="${STEPS_UPSTREAM_OUTPUTS_UPSTREAM_TAG}"
-          branch="bot-dep-tailwindcss-${upstream_tag}"
+          branch="bot-dep-pagefind-${upstream_tag}"
           pr=$(gh pr list --head "${branch}" --json number --jq '.[0].number // empty')
           if [[ -n "$pr" ]]; then
             echo "PR #${pr} already exists for ${upstream_tag}"
@@ -82,11 +82,11 @@ jobs:
           gem_tag="v${gem_version}"
 
           # update version files
-          sed -E -i "s/^(\s+)VERSION\s+=.*/\1VERSION = \"${upstream_tag}\"/" lib/tailwindcss/ruby/upstream.rb
-          sed -E -i "s/^(\s+)VERSION\s+=.*/\1VERSION = \"${gem_version}\"/" lib/tailwindcss/ruby/version.rb
+          sed -E -i "s/^(\s+)VERSION\s+=.*/\1VERSION = \"${upstream_tag}\"/" lib/pagefind/upstream.rb
+          sed -E -i "s/^(\s+)VERSION\s+=.*/\1VERSION = \"${gem_version}\"/" lib/pagefind/version.rb
 
           # update changelog
-          replacement_text="## ${gem_tag}\n\n* Update to [Tailwind CSS ${upstream_tag}](https:\/\/github.com\/tailwindlabs\/tailwindcss\/releases\/tag\/${upstream_tag})"
+          replacement_text="## ${gem_tag}\n\n* Update to [Pagefind ${upstream_tag}](https:\/\/github.com\/Pagefind\/pagefind\/releases\/tag\/${upstream_tag})"
           sed -E -i "0,/^##/{s|^##|${replacement_text}\n\n##|}" CHANGELOG.md
 
       - name: Install dependencies
@@ -106,12 +106,12 @@ jobs:
       - name: Create PR
         if: steps.upstream.outputs.needed == 'true' && steps.existing_pr.outputs.exists == 'false'
         env:
-          GH_TOKEN: ${{ secrets.TAILWINDCSS_RUBY_PR_TOKEN }}
+          GH_TOKEN: ${{ secrets.PAGEFIND_RUBY_PR_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           STEPS_UPSTREAM_OUTPUTS_UPSTREAM_TAG: ${{ steps.upstream.outputs.upstream_tag }}
         run: |
           upstream_tag="${STEPS_UPSTREAM_OUTPUTS_UPSTREAM_TAG}"
-          branch="bot-dep-tailwindcss-${upstream_tag}"
+          branch="bot-dep-pagefind-${upstream_tag}"
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -119,10 +119,10 @@ jobs:
 
           git switch -c "${branch}"
           git add lib CHANGELOG.md Gemfile*
-          git commit -m "$(printf "dep: update to Tailwind CSS %s\n\nhttps://github.com/tailwindlabs/tailwindcss/releases/tag/%s" "${upstream_tag}" "${upstream_tag}")"
+          git commit -m "$(printf "dep: update to Pagefind %s\n\nhttps://github.com/Pagefind/pagefind/releases/tag/%s" "${upstream_tag}" "${upstream_tag}")"
 
           git push --force -u origin "${branch}"
 
           gh pr create \
-            --title "dep: update to Tailwind CSS ${upstream_tag}" \
-            --body "$(printf "Update to [Tailwind CSS %s](https://github.com/tailwindlabs/tailwindcss/releases/tag/%s).\n\nThis PR was created automatically by the upstream workflow." "${upstream_tag}" "${upstream_tag}")"
+            --title "dep: update to Pagefind ${upstream_tag}" \
+            --body "$(printf "Update to [Pagefind %s](https://github.com/Pagefind/pagefind/releases/tag/%s).\n\nThis PR was created automatically by the upstream workflow." "${upstream_tag}" "${upstream_tag}")"

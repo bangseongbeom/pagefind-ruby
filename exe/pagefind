@@ -4,7 +4,7 @@
 require "pagefind"
 
 begin
-  command = [Tailwindcss::Ruby.executable, *ARGV]
+  command = [Pagefind.executable, *ARGV]
   puts command.inspect
   if Gem.win_platform?
     # use system rather than exec as exec inexplicably fails to find the executable on Windows
@@ -13,7 +13,7 @@ begin
   else
     exec(*command)
   end
-rescue Tailwindcss::Ruby::UnsupportedPlatformException, Tailwindcss::Ruby::ExecutableNotFoundException => e
+rescue Pagefind::UnsupportedPlatformException, Pagefind::ExecutableNotFoundException => e
   STDERR.puts("ERROR: " + e.message)
   exit 1
 end

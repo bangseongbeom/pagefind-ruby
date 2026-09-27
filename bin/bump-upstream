@@ -6,7 +6,7 @@ set -o pipefail
 if [[ $# -lt 1 ]] ; then
   echo "Usage: $(basename $0) <upstream-tag>"
   echo
-  echo "Where <upstream_version> is the tag name of the Tailwind CSS release."
+  echo "Where <upstream_version> is the tag name of the Pagefind release."
   exit 1
 fi
 
@@ -30,7 +30,7 @@ if [[ -z "$github_user" ]]; then
 fi
 
 # view the release. will fail if the release does not exist
-$gh_cmd release view ${upstream_tag} --repo tailwindlabs/tailwindcss
+$gh_cmd release view ${upstream_tag} --repo Pagefind/pagefind
 
 # get on the right starting branch
 if [[ -n "$($git_cmd status --porcelain --untracked-files=no)" ]]; then
@@ -54,8 +54,8 @@ fi
 #
 # modify the upstream version and gem version
 #
-$sed_cmd -E -i "s/^(\s+)VERSION\s+=.*/\1VERSION = \"${upstream_tag}\"/" lib/tailwindcss/ruby/upstream.rb
-$sed_cmd -E -i "s/^(\s+)VERSION\s+=.*/\1VERSION = \"${gem_version}\"/" lib/tailwindcss/ruby/version.rb
+$sed_cmd -E -i "s/^(\s+)VERSION\s+=.*/\1VERSION = \"${upstream_tag}\"/" lib/pagefind/upstream.rb
+$sed_cmd -E -i "s/^(\s+)VERSION\s+=.*/\1VERSION = \"${gem_version}\"/" lib/pagefind/version.rb
 
 bundle install
 
@@ -65,7 +65,7 @@ bundle install
 replacement_text=$(cat <<EOF
 ## ${gem_tag}
 
-* Update to [Tailwind CSS ${upstream_tag}](https://github.com/tailwindlabs/tailwindcss/releases/tag/${upstream_tag}) @${github_user}
+* Update to [Pagefind ${upstream_tag}](https://github.com/Pagefind/pagefind/releases/tag/${upstream_tag}) @${github_user}
 EOF
 )
 # substitute newlines with '\n' so sed will do the right things
@@ -80,11 +80,11 @@ bundle exec rake clobber download
 #
 #  commit to a branch
 #
-git switch -c flavorjones-dep-tailwindcss-${upstream_tag}
+git switch -c bangseongbeom-dep-pagefind-${upstream_tag}
 git add lib CHANGELOG.md Gemfile*
-git commit -m "dep: update to Tailwind CSS ${upstream_tag}
+git commit -m "dep: update to Pagefind ${upstream_tag}
 
-https://github.com/tailwindlabs/tailwindcss/releases/tag/${upstream_tag}
+https://github.com/Pagefind/pagefind/releases/tag/${upstream_tag}
 "
 
 echo "Now push the current branch and create a PR."
