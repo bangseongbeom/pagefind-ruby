@@ -82,7 +82,7 @@ jobs:
         with:
           name: gem-ruby
           path: pkg
-      - run: "gem install pkg/pagefind-ruby-*.gem"
+      - run: "gem install pkg/pagefind-*.gem"
       - run: "pagefind 2>&1 | fgrep 'ERROR: Cannot find the pagefind executable'"
 
   install-native:
@@ -120,7 +120,7 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
       - if: ${{ matrix.runs_on }}
-        run: "gem install pkg/pagefind-ruby-*.gem"
+        run: "gem install pkg/pagefind-*.gem"
       - if: ${{ matrix.runs_on }}
         run: "pagefind --help"
       - if: ${{ (! matrix.runs_on) && matrix.docker_platform }}
@@ -131,6 +131,6 @@ jobs:
             ${{ matrix.docker_platform }} ruby:${{ matrix.ruby }}${{ matrix.docker_tag }} \
             sh -c "
               ${{ matrix.bootstrap }}
-              gem install pkg/pagefind-ruby-*.gem
+              gem install pkg/pagefind-*.gem
               pagefind --help
             "

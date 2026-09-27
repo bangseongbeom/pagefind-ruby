@@ -15,7 +15,7 @@ In any case, if you're not ready to upgrade to v4, then pin your project to the 
 
 ```ruby
 # If you're not ready to upgrade yet!
-gem "pagefind-ruby", "~> 3.4"
+gem "pagefind", "~> 3.4"
 ```
 
 
@@ -36,13 +36,13 @@ Supported platforms are:
 Install the gem and add to the application's Gemfile by executing:
 
 ```bash
-bundle add pagefind-ruby
+bundle add pagefind
 ```
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
 ```bash
-gem install pagefind-ruby
+gem install pagefind
 ```
 
 ### Using a local installation of `pagefind`
@@ -78,7 +78,7 @@ The gem makes available `Pagefind.executable` which is the path to the vendored 
 ``` ruby
 require "pagefind"
 Pagefind.executable
-# => "/path/to/installs/ruby/3.3.5/lib/ruby/gems/3.3.0/gems/pagefind-ruby-0.1.0-x86_64-linux/exe/x86_64-linux/pagefind"
+# => "/path/to/installs/ruby/3.3.5/lib/ruby/gems/3.3.0/gems/pagefind-0.1.0-x86_64-linux/exe/x86_64-linux/pagefind"
 ```
 
 
@@ -93,7 +93,7 @@ $ bundle exec which pagefind
 
 # run the actual executable through the shim
 $ bundle exec pagefind --help
-["/path/to/installs/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/pagefind-ruby-4.0.12-x86_64-linux-gnu/exe/x86_64-linux-gnu/pagefind", "--help"]
+["/path/to/installs/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/pagefind-4.0.12-x86_64-linux-gnu/exe/x86_64-linux-gnu/pagefind", "--help"]
 ≈ pagefind v4.0.12
 
 Usage:

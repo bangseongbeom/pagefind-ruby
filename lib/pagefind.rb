@@ -5,7 +5,7 @@ require_relative "pagefind/upstream"
 
 module Pagefind
   DEFAULT_DIR = File.expand_path(File.join(__dir__, "..", "exe"))
-  GEM_NAME = "pagefind-ruby"
+  GEM_NAME = "pagefind"
 
   # raised when the host platform is not supported by upstream pagefind's binary releases
   class UnsupportedPlatformException < StandardError

@@ -23,7 +23,7 @@
 #     https://rubyinstaller.org/2021/12/31/rubyinstaller-3.1.0-1-released.html
 #
 #  As a concrete example, an x86_64-linux system will see these files on disk after installing
-#  pagefind-ruby-1.x.x-x86_64-linux.gem:
+#  pagefind-1.x.x-x86_64-linux.gem:
 #
 #     exe/
 #     ├── pagefind
@@ -32,13 +32,13 @@
 #
 #  So the full set of gem files created will be:
 #
-#  - pkg/pagefind-ruby-1.0.0.gem
-#  - pkg/pagefind-ruby-1.0.0-aarch64-linux.gem
-#  - pkg/pagefind-ruby-1.0.0-arm64-darwin.gem
-#  - pkg/pagefind-ruby-1.0.0-x64-mingw32.gem
-#  - pkg/pagefind-ruby-1.0.0-x64-mingw-ucrt.gem
-#  - pkg/pagefind-ruby-1.0.0-x86_64-darwin.gem
-#  - pkg/pagefind-ruby-1.0.0-x86_64-linux.gem
+#  - pkg/pagefind-1.0.0.gem
+#  - pkg/pagefind-1.0.0-aarch64-linux.gem
+#  - pkg/pagefind-1.0.0-arm64-darwin.gem
+#  - pkg/pagefind-1.0.0-x64-mingw32.gem
+#  - pkg/pagefind-1.0.0-x64-mingw-ucrt.gem
+#  - pkg/pagefind-1.0.0-x86_64-darwin.gem
+#  - pkg/pagefind-1.0.0-x86_64-linux.gem
 # 
 #  Note that in addition to the native gems, a vanilla "ruby" gem will also be created without
 #  either the `exe/pagefind` script or a binary executable present.
