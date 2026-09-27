@@ -31,15 +31,15 @@ gem install pagefind
 
 ### Using a local installation of `pagefind`
 
-If you are not able to use the vendored standalone executables (for example, if you're on an unsupported platform), you can use a [local installation](https://pagefind.app/docs/installation) of the `pagefind` executable by setting an environment variable named `PAGEFIND_INSTALL_DIR` to the directory path containing the executable.
+If you are not able to use the vendored precompiled binaries (for example, if you're on an unsupported platform), you can use a [local installation](https://pagefind.app/docs/installation/) of the `pagefind` binary by setting an environment variable named `PAGEFIND_INSTALL_DIR` to the directory path containing the binary.
 
-For example, if you've installed `pagefind` so that the executable is found at `/path/to/node_modules/bin/pagefind`, then you should set your environment variable like so:
+For example, if you've [built Pagefind from source](https://pagefind.app/docs/installation/#building-from-source) with `cargo install pagefind` so that the binary is found at `$HOME/.cargo/bin/pagefind`, then you should set your environment variable like so:
 
 ``` sh
-PAGEFIND_INSTALL_DIR=/path/to/node_modules/bin
+PAGEFIND_INSTALL_DIR=$HOME/.cargo/bin
 ```
 
-or, for relative paths like `./node_modules/.bin/pagefind`:
+or, if you've installed the [npm wrapper package](https://pagefind.app/docs/installation/#running-via-npx) so that the executable is found at a relative path like `./node_modules/.bin/pagefind`:
 
 ``` sh
 PAGEFIND_INSTALL_DIR=node_modules/.bin
