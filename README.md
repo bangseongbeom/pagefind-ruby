@@ -1,5 +1,9 @@
 # Pagefind
 
+[![ci](https://github.com/bangseongbeom/pagefind-ruby/actions/workflows/ci.yml/badge.svg)](https://github.com/bangseongbeom/pagefind-ruby/actions/workflows/ci.yml)
+[![Ruby Code Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/standardrb/standard)
+[![Gem Version](https://badge.fury.io/rb/pagefind.svg)](https://badge.fury.io/rb/pagefind)
+
 A self-contained `pagefind` executable, wrapped up in a ruby gem. That's it. Nothing else.
 
 
