@@ -9,5 +9,6 @@ gem "irb"
 gem "rake", "~> 13.0"
 
 gem "minitest", "~> 6.0"
+gem "minitest-mock", "~> 5.27"
 
 gem "standard", "~> 1.3"
