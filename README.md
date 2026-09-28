@@ -37,7 +37,7 @@ gem install pagefind
 
 ### Using a local installation of `pagefind`
 
-If you are not able to use the vendored precompiled binaries (for example, if you're on an unsupported platform), you can use a [local installation](https://pagefind.app/docs/installation/) of the `pagefind` binary by setting an environment variable named `PAGEFIND_INSTALL_DIR` to the directory path containing the binary.
+If you are not able to use the vendored precompiled binaries (for example, if you're on an unsupported platform), you can use a [local installation](https://pagefind.app/docs/installation/) of the `pagefind_extended` or `pagefind` binary by setting an environment variable named `PAGEFIND_INSTALL_DIR` to the directory path containing the binary.
 
 For example, if you've [built Pagefind from source](https://pagefind.app/docs/installation/#building-from-source) with `cargo install pagefind` so that the binary is found at `$HOME/.cargo/bin/pagefind`, then you should set your environment variable like so:
 
@@ -68,7 +68,7 @@ The gem makes available `Pagefind.executable` which is the path to the vendored 
 ``` ruby
 require "pagefind"
 Pagefind.executable
-# => "/path/to/installs/ruby/3.3.5/lib/ruby/gems/3.3.0/gems/pagefind-1.5.2-x86_64-linux/exe/x86_64-linux/pagefind"
+# => "/path/to/installs/ruby/3.3.5/lib/ruby/gems/3.3.0/gems/pagefind-1.5.2-x86_64-linux/exe/x86_64-linux/pagefind_extended"
 ```
 
 
@@ -83,10 +83,10 @@ $ bundle exec which pagefind
 
 # run the actual executable through the shim
 $ bundle exec pagefind --help
-["/path/to/installs/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/pagefind-1.5.2-x86_64-linux/exe/x86_64-linux/pagefind", "--help"]
+["/path/to/installs/installs/ruby/3.4.2/lib/ruby/gems/3.4.0/gems/pagefind-1.5.2-x86_64-linux/exe/x86_64-linux/pagefind_extended", "--help"]
 Implement search on any static website.
 
-Usage: pagefind [OPTIONS]
+Usage: pagefind_extended [OPTIONS]
 
 Options:
   -s, --site <SITE>

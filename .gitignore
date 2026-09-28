@@ -3,7 +3,7 @@
 /_yardoc/
 /coverage/
 /doc/
-/exe/*/pagefind
+/exe/*/pagefind_extended
 /pkg/
 /spec/reports/
 /tmp/

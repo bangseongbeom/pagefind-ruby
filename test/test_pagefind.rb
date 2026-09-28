@@ -6,7 +6,7 @@ class TestPagefind < Minitest::Spec
   def mock_exe_directory(platform)
     Dir.mktmpdir do |dir|
       FileUtils.mkdir(File.join(dir, platform))
-      path = File.join(dir, platform, "pagefind")
+      path = File.join(dir, platform, "pagefind_extended")
       FileUtils.touch(path)
       stub_gem_platform_match_gem(true) do
         yield(dir, path)
@@ -36,7 +36,7 @@ class TestPagefind < Minitest::Spec
 
   it ".executable returns the absolute path to the binary" do
     mock_exe_directory("sparc-solaris2.8") do |dir, executable|
-      expected = File.expand_path(File.join(dir, "sparc-solaris2.8", "pagefind"))
+      expected = File.expand_path(File.join(dir, "sparc-solaris2.8", "pagefind_extended"))
       assert_equal(expected, executable, "assert on setup")
       assert_equal(expected, Pagefind.executable(exe_path: dir))
     end

@@ -30,7 +30,7 @@ module Pagefind
         if File.directory?(pagefind_install_dir)
           warn "NOTE: using PAGEFIND_INSTALL_DIR to find pagefind executable: #{pagefind_install_dir}"
           exe_path = pagefind_install_dir
-          exe_file = (Gem.win_platform? ? %w[pagefind.exe pagefind.cmd pagefind] : %w[pagefind])
+          exe_file = (Gem.win_platform? ? %w[pagefind_extended.exe pagefind.exe pagefind.cmd pagefind] : %w[pagefind_extended pagefind])
             .map { |file_name| File.expand_path(File.join(pagefind_install_dir, file_name)) }
             .find { |file_name| File.exist?(file_name) }
         else
@@ -47,7 +47,7 @@ module Pagefind
           MESSAGE
         end
 
-        exe_file = Dir.glob(File.expand_path(File.join(exe_path, "*", "pagefind"))).find do |f|
+        exe_file = Dir.glob(File.expand_path(File.join(exe_path, "*", "pagefind_extended"))).find do |f|
           Gem::Platform.match_gem?(Gem::Platform.new(File.basename(File.dirname(f))), GEM_NAME)
         end
       end

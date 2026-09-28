@@ -4,12 +4,12 @@
 #  TL;DR: run "rake package"
 #
 #  The native platform gems (defined by Pagefind::Upstream::NATIVE_PLATFORMS) will each contain
-#  the pagefind binary executable in addition to what the vanilla ruby gem contains:
+#  the pagefind_extended binary executable in addition to what the vanilla ruby gem contains:
 #
 #     exe/
 #     ├── pagefind                             #  generic ruby script to find and run the binary
 #     └── <Gem::Platform architecture name>/
-#         └── pagefind                         #  the pagefind binary executable
+#         └── pagefind_extended                #  the pagefind_extended binary executable
 #
 #  The ruby script `exe/pagefind` is installed into the user's path, and it simply locates the
 #  binary and executes it. Note that this script is required because rubygems requires that
@@ -21,7 +21,7 @@
 #     exe/
 #     ├── pagefind
 #     └── x86_64-linux/
-#         └── pagefind
+#         └── pagefind_extended
 #
 #  So the full set of gem files created will be:
 #
@@ -69,7 +69,7 @@ require_relative "../lib/pagefind/upstream"
 PAGEFIND_ARCHIVE_DIR = "tmp"
 
 def pagefind_archive_filename(target)
-  "pagefind-#{Pagefind::Upstream::VERSION}-#{target}.tar.gz"
+  "pagefind_extended-#{Pagefind::Upstream::VERSION}-#{target}.tar.gz"
 end
 
 def pagefind_download_url(filename)
@@ -106,8 +106,8 @@ exepaths = []
 Pagefind::Upstream::NATIVE_PLATFORMS.each do |platform, target|
   PAGEFIND_RUBY_GEMSPEC.dup.tap do |gemspec|
     exedir = File.join(gemspec.bindir, platform) # "exe/x86_64-linux"
-    exepath = File.join(exedir, "pagefind") # "exe/x86_64-linux/pagefind"
-    archivepath = File.join(PAGEFIND_ARCHIVE_DIR, pagefind_archive_filename(target)) # "tmp/pagefind-v1.5.2-x86_64-unknown-linux-musl.tar.gz"
+    exepath = File.join(exedir, "pagefind_extended") # "exe/x86_64-linux/pagefind_extended"
+    archivepath = File.join(PAGEFIND_ARCHIVE_DIR, pagefind_archive_filename(target)) # "tmp/pagefind_extended-v1.5.2-x86_64-unknown-linux-musl.tar.gz"
     exepaths << exepath
 
     # modify a copy of the gemspec to include the native executable
@@ -125,7 +125,7 @@ Pagefind::Upstream::NATIVE_PLATFORMS.each do |platform, target|
 
       Zlib::GzipReader.open(archivepath) do |gz|
         Gem::Package::TarReader.new(gz) do |tar|
-          entry = tar.find { |entry| %w[pagefind pagefind.exe].include?(entry.full_name) }
+          entry = tar.find { |entry| %w[pagefind_extended pagefind_extended.exe].include?(entry.full_name) }
           abort "Cannot find the pagefind executable in #{archivepath}" unless entry
 
           File.binwrite(exepath, entry.read)
