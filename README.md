@@ -6,6 +6,8 @@
 
 A self-contained `pagefind` executable, wrapped up in a ruby gem. That's it. Nothing else.
 
+This gem is based on [tailwindcss-ruby](https://github.com/flavorjones/tailwindcss-ruby). Much of the packaging approach, code, and documentation was adapted from it.
+
 
 ## Installation
 
