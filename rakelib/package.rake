@@ -55,6 +55,7 @@
 #  - rake gem                    # Build all the gem files
 #  - rake package                # Build all the gem files (same as `gem`)
 #  - rake repackage              # Force a rebuild of all the gem files
+#  - rake test                   # Run the tests (downloads the current platform's binary first)
 #
 #  Note also that the binary executables will be lazily downloaded when needed, but you can
 #  explicitly download them with the `rake download` command.
@@ -155,6 +156,11 @@ end
 
 desc "Download all pagefind binaries"
 task "download" => [:check, *exepaths]
+
+local_exepath = exepaths.find do |exepath|
+  Gem::Platform.match_gem?(Gem::Platform.new(File.basename(File.dirname(exepath))), PAGEFIND_RUBY_GEMSPEC.name)
+end
+task test: local_exepath if local_exepath
 
 CLOBBER.add(exepaths.map { |p| File.dirname(p) })
 CLOBBER.add(archivepaths)
