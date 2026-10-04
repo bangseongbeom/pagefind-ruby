@@ -3,6 +3,7 @@
 ## Unreleased
 
 * Add `Pagefind::Index` and `Pagefind::Service` @bangseongbeom
+* Support `PAGEFIND_EXTENDED_BINARY_PATH` and `PAGEFIND_BINARY_PATH` @bangseongbeom
 
 ## v1.5.2.1
 

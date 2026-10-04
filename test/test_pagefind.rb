@@ -107,6 +107,24 @@ class TestPagefind < Minitest::Spec
     end
   end
 
+  it ".executable returns PAGEFIND_BINARY_PATH even when PAGEFIND_INSTALL_DIR is set" do
+    ENV["PAGEFIND_BINARY_PATH"] = "/path/to/pagefind"
+    ENV["PAGEFIND_INSTALL_DIR"] = "/does/not/exist"
+    assert_equal("/path/to/pagefind", Pagefind.executable)
+  ensure
+    ENV["PAGEFIND_BINARY_PATH"] = nil
+    ENV["PAGEFIND_INSTALL_DIR"] = nil
+  end
+
+  it ".executable prefers PAGEFIND_EXTENDED_BINARY_PATH over PAGEFIND_BINARY_PATH" do
+    ENV["PAGEFIND_EXTENDED_BINARY_PATH"] = "/path/to/pagefind_extended"
+    ENV["PAGEFIND_BINARY_PATH"] = "/path/to/pagefind"
+    assert_equal("/path/to/pagefind_extended", Pagefind.executable)
+  ensure
+    ENV["PAGEFIND_EXTENDED_BINARY_PATH"] = nil
+    ENV["PAGEFIND_BINARY_PATH"] = nil
+  end
+
   it ".executable raises ExecutableNotFoundException is PAGEFIND_INSTALL_DIR is set to a nonexistent dir" do
     ENV["PAGEFIND_INSTALL_DIR"] = "/does/not/exist"
     assert_raises(Pagefind::DirectoryNotFoundException) do

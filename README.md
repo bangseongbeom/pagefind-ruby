@@ -37,7 +37,7 @@ gem install pagefind
 
 ### Using a local installation of `pagefind`
 
-If you are not able to use the vendored precompiled binaries (for example, if you're on an unsupported platform), you can use a [local installation](https://pagefind.app/docs/installation/) of the `pagefind_extended` or `pagefind` binary by setting an environment variable named `PAGEFIND_INSTALL_DIR` to the directory path containing the binary.
+If you are not able to use the vendored precompiled binaries (for example, if you're on an unsupported platform), you can use a [local installation](https://pagefind.app/docs/installation/) of the `pagefind_extended` or `pagefind` binary by setting an environment variable named `PAGEFIND_EXTENDED_BINARY_PATH` or `PAGEFIND_BINARY_PATH` to the path of the binary, or `PAGEFIND_INSTALL_DIR` to the directory path containing the binary.
 
 For example, if you've [built Pagefind from source](https://pagefind.app/docs/installation/#building-from-source) with `cargo install pagefind` so that the binary is found at `$HOME/.cargo/bin/pagefind`, then you should set your environment variable like so:
 

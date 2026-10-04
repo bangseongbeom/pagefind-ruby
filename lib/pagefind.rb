@@ -27,6 +27,9 @@ module Pagefind
     end
 
     def executable(exe_path: DEFAULT_DIR)
+      binary_path = ENV["PAGEFIND_EXTENDED_BINARY_PATH"] || ENV["PAGEFIND_BINARY_PATH"]
+      return binary_path if binary_path
+
       pagefind_install_dir = ENV["PAGEFIND_INSTALL_DIR"]
       if pagefind_install_dir
         if File.directory?(pagefind_install_dir)
