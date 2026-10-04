@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["방성범 (Bang Seongbeom)"]
   spec.email = ["bangseongbeom@gmail.com"]
 
-  spec.summary = "A self-contained `pagefind` executable."
-  spec.description = "A self-contained `pagefind` executable, wrapped up in a ruby gem. That's it. Nothing else."
+  spec.summary = "A self-contained `pagefind` executable, with an indexing API."
+  spec.description = "A self-contained `pagefind` executable, with an indexing API, wrapped up in a ruby gem. That's it. Nothing else."
   spec.homepage = "https://github.com/bangseongbeom/pagefind-ruby"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.2.0"

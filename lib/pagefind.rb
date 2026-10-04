@@ -2,6 +2,8 @@
 
 require_relative "pagefind/version"
 require_relative "pagefind/upstream"
+require_relative "pagefind/service"
+require_relative "pagefind/index"
 
 module Pagefind
   DEFAULT_DIR = File.expand_path(File.join(__dir__, "..", "exe"))
