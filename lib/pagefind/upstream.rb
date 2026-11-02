@@ -1,6 +1,6 @@
 module Pagefind
   module Upstream
-    VERSION = "v1.5.2"
+    VERSION = "v1.6.0"
 
     # rubygems platform name => upstream release target
     NATIVE_PLATFORMS = {
