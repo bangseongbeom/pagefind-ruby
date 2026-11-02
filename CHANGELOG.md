@@ -1,5 +1,9 @@
 # pagefind-ruby changelog
 
+## v1.6.0
+
+* Update to [Pagefind v1.6.0](https://github.com/Pagefind/pagefind/releases/tag/v1.6.0)
+
 ## v1.5.2.2
 
 * Add `Pagefind::Index` and `Pagefind::Service` @bangseongbeom
